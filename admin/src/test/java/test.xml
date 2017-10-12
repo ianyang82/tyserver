@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+      <upgradeIncrRequest>
+  <parameter>
+  <callid>0</callid>
+  <language>zh_CN</language>
+  <client>
+  <dnum>203490003</dnum>
+  <didtoken>f98600a8e29ce81bc9847c04d9668b42</didtoken>
+  <devmodel>TCL-CN-MS801-F3500A-3D</devmodel>
+  <systemver>2.2</systemver>
+  <packagever>V8-MS80101-LF1V001_000</packagever>
+  </client>
+  </parameter>
+  <app>
+  <appid>TCL-CN-MS801-F3500A-3D</appid>
+  <ver>V8-MS80104-LF1V098</ver>
+  <verid>0</verid>
+  </app>
+  <apiversion>"1.0"</apiversion>
+  </upgradeIncrRequest>

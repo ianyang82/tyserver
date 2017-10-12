@@ -1,0 +1,40 @@
+<%--
+  Created by IntelliJ IDEA.
+ * User: warriorr
+ * Mail: warriorr@163.com
+  Date: 2014/8/25
+  Time: 10:59
+  To change this template use File | Settings | File Templates.
+--%>
+<%@page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<head>
+    <script>
+        var ctx = '${ctx}';
+    </script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/jquery-easyui/themes/bootstrap/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/jquery-easyui/themes/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/css.css"/>
+    <script type="text/javascript" src="${ctx}/static/jquery-easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="${ctx}/static/jquery-easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="${easyui_lang}"></script>
+    <script type="text/javascript" src="${ctx}/static/js/validatebox.js"></script>
+    <script type="text/javascript" src="${ctx}/static/js/easyui_utils.js"></script>
+    <script type="text/javascript">
+        $(document).ajaxComplete(function (event, obj, settings) {
+            if (obj.responseText == 'timeout') { //超时标识
+                window.top.location.href = '/login?error=login.timeout'; //跳转到登录页面
+            }
+        });
+        var messageStrings = {
+            hint: '<spring:message code="hint"/>',
+            loading: '<spring:message code="loading"/>',
+            record_create: '<spring:message code="record.create"/>',
+            record_update: '<spring:message code="record.update"/>',
+            update_hint_check: '<spring:message code="update.hint.check"/>',
+            update_hint_check_one: '<spring:message code="update.hint.check.one"/>',
+            delete_hint_check: '<spring:message code="delete.hint.check"/>',
+            delete_confirm: '<spring:message code="delete.confirm"/>'
+        };
+
+    </script>
+</head>
