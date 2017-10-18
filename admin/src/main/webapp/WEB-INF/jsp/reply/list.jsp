@@ -18,19 +18,45 @@
             loadGrid();
         });
         function loadGrid() {
-               var url = "<c:url value='/resource/list'/>";
+               var url = "<c:url value='/wxmenu/list'/>";
             var data_opt = {queryParams: {"search.delFlag_eq": "0"}};
             baseGrid(url, data_opt);
         }
+        function synctoserver()
+        {
+        	$.getJSON("synctoserver",function(data){
+        		console.debug(data);
+        	})
+        }
+      //更新
+        function updatemenu(href, grid_id) {
+            if (grid_id == null) {
+                grid_id = "dg";
+            }
+            var rows = $("#" + grid_id).datagrid('getSelections');
+//            console.debug(rows)
+            if (rows.length == 0) {
+                $.messager.alert(messageStrings.hint, messageStrings.update_hint_check, 'info');
+                return;
+            }
+            if (rows.length > 1) {
+                $.messager.alert(messageStrings.hint, messageStrings.update_hint_check_one, 'info');
+                return;
+            }
+            var title="修改微信菜单";
+            parent.setMain(title,href+"?id="+rows[0].id);
+        }
 
+      
     </script>
 </head>
 <body>
 <div id="search_form">
     <form style="margin:10px;">
-        <a href="#" onclick="addrow('<c:url value='/resource/create'/>');" class="easyui-linkbutton" iconCls="icon-add"><spring:message code="create"/></a>
-        <a href="#" onclick="updaterow('<c:url value='/resource/update'/>');" class="easyui-linkbutton" iconCls="icon-edit"><spring:message code="update"/></a>
-        <a href="#" onclick="deleterows('<c:url value='/resource/del'/>');" class="easyui-linkbutton" iconCls="icon-remove"><spring:message code="delete"/></a>
+        <a href="#" onclick="addrow('<c:url value='/wxmenu/create'/>');" class="easyui-linkbutton" iconCls="icon-add"><spring:message code="create"/></a>
+        <a href="#" onclick="updatemenu('/wxmenu/update');" class="easyui-linkbutton" iconCls="icon-edit"><spring:message code="update"/></a>
+        <a href="#" onclick="deleterows('<c:url value='/wxmenu/del'/>');" class="easyui-linkbutton" iconCls="icon-remove"><spring:message code="delete"/></a>
+        <a href="#" onclick="synctoserver();" class="easyui-linkbutton" iconCls="icon-ok">更新微信</a>
         <spring:message code="state"/>：
         <select name="search.delFlag_eq" style="width:190px;">
             <option value="0"><spring:message code="normal"/></option>
