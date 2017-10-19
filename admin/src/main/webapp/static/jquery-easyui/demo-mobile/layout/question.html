@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>童言朗读者</title>
+	<link rel="stylesheet" type="text/css" href="../../themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../themes/mobile.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<script type="text/javascript" src="../../jquery.min.js"></script>
+    <script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../jquery.easyui.mobile.js"></script>
+    <style type="text/css">
+    .list-header,.list-content{
+    	display: inline-block;padding-left: 20px;
+    }
+    .list-footer{
+    	padding: 10px 40px;
+    	background: url("../../../image/heart114.png") no-repeat;
+    	background-size: 30px 30px;
+    	background-position:10px 5px;
+    	min-height: 30px;
+    }
+    .list-footer img{
+    	width: 30px;
+    	height: 30px;float: left;padding-right: 3px;
+    }
+    .run-content{
+    width: 300px;
+    background: url("../../../image/timg.gif") no-repeat;
+    background-position: 50px -225px;
+    }
+    footer .l-btn{
+    font-size: 14px;
+    padding: 10px 0px;
+    width: 50%
+    }
+  .play-btn{
+  	background: url("../../../image/play86.png") no-repeat ;
+  	background-size:30px 30px;
+    border: none;
+    height:30px;
+    width: 30px;
+  }
+  .stop-btn{
+  	background: url("../../../image/stop39.png") no-repeat ;
+  	background-size:30px 30px;
+  }
+ 
+
+    </style>
+    <script type="text/javascript">
+    var au=document.createElement("AUDIO");
+    $(function() {
+    	$(".play-btn").click(function(){
+    		if($(this).hasClass("stop-btn"))
+    		{
+    			au.pause();
+    			$(".run-content").removeClass("run-content");
+    			$(".play-btn").removeClass("stop-btn")
+    		}
+    		else
+    		{
+    			au.src=$(this).attr("vurl");
+    			au.play();
+    			$(this).parent().addClass("run-content");
+    			$(".play-btn").removeClass("stop-btn")
+    			$(this).addClass("stop-btn");
+    		}
+    	})
+    	$(".easyui-menubutton").click(function(){
+			$('#mm1').menu('show', {
+				left: $(this).offset().left,
+				top: $(this).offset().top + $(this).height()
+			});
+		});
+		for(var i=0;i<5;i++)
+		{
+			var al=$(".a-li").clone();
+			$("#list").append(al);
+			$(al).find(".easyui-menubutton").click(function(){
+				
+				$('#mm1').menu('show', {
+					left: $(this).offset().left,
+					top: $(this).offset().top + $(this).height()
+				});
+			});
+		}
+	})
+    </script>
+</head>
+<body>
+	<div class="easyui-navpanel">
+        <header>
+            <div class="m-toolbar">
+                <div class="m-title">童言朗读者</div>
+                <div class="m-left">
+                    <a href="javascript:void(0)" class="easyui-linkbutton m-back" plain="true" outline="true">上一期</a>
+                </div>
+                <div class="m-right">
+                    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" outline="true">往期</a>
+                </div>
+            </div>
+        </header>
+        <div style="padding:20px 10px">
+        <div class="m-title" style="font-size:30px;font-weight:400;padding-bottom:20px">我是标题</div>
+        <div style="font-size:16px;line-height:24px">1920年的一个夜晚，马金纳乘坐的轮船不幸在海上触礁了。船沉了，落水的人拼命挣扎，等待着救生船。过了很长时间，他再也没有力气继续游了。<br/>
+　　突然，远处海面上隐隐约约传来断断续续的歌声。马金纳顿时觉得浑身有了力量，拼命朝着歌声游去。<br/>
+　　不久，马金纳看到，在雾气笼罩的海面上，几个妇女正抱着一要圆木游着，一个不满10岁的小姑娘在她们中间，正在高声歌唱。她一次又一次从浪花中冒出头来，用手抹一抹脸上的海水，又唱起来。海风把她清脆、激昂的歌声传播到更远的地方，远处的人们像马金纳一样聚拢过来了。
+　　终于，一艘小艇追寻着歌声驶来了！马金纳、小姑娘、所有游过来的人都得救了。大家从内心感谢这位小姑娘，是她，用自己的歌声，给人们增添了勇气和力量，是歌声救了大家。</div>
+        </div>
+		<ul id="list" class="m-list">
+			<li class='a-li'>
+				
+				<div class="list-header"><img class="list-image" src="../images/modem.png"/><br/>邹子睿</div>
+				<div class="list-content"><button class="play-btn" vurl="../../../snow.mp3">
+				</div>
+				<div class="list-footer"><img class="list-image" src="../images/modem.png"/><img class="list-image" src="../images/modem.png"/><img class="list-image" src="../images/modem.png"/><img class="list-image" src="../images/modem.png"/><img class="list-image" src="../images/modem.png"/><img class="list-image" src="../images/modem.png"/><img class="list-image" src="../images/modem.png"/><img class="list-image" src="../images/modem.png"/><img class="list-image" src="../images/modem.png"/></div>
+				<div style="height: 30px;display: inline-block;float: right;">
+				<a href="javascript:void(0)" class="easyui-menubutton" data-options="hasDownArrow:false,iconCls:'icon-comment'" style="width:30px;"></a>
+				<a href="javascript:void(0)" class="easyui-menubutton" data-options="hasDownArrow:false,iconCls:'icon-trash'" style="width:30px;"></a></div> 
+			</li>
+			
+		</ul>
+		
+        <footer style="padding:2px 3px">
+        <button class="l-btn">直接发送</button><button class="l-btn">录音并发送</button>
+        </footer>
+	</div>
+	<div id="mm1" class="easyui-menu" style="width:100px;">  
+        <div>点赞</div>  
+        <div onclick="$('#dlg1').dialog('open').dialog('center')">回复</div>
+    </div>
+    <div id="dlg1" class="easyui-dialog" style="padding:20px 6px;width:80%;" data-options="inline:true,modal:true,closed:true,title:false">
+    <form id="c-form">
+			<div style="margin-bottom:10px">
+			<input name="answerid">
+				<input class="easyui-textbox" name="content" prompt="评论" style="width:100%;" multiline="true">
+			</div>
+			<div class="dialog-button">
+				<a href="javascript:void(0)" class="easyui-linkbutton" style="width:100%;height:30px" onclick="$('#dlg1').dialog('close')">发送</a>
+			</div>
+			</form>
+		</div>
+</body>
+</html>

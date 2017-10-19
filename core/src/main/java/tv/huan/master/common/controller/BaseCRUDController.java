@@ -1,8 +1,12 @@
 package tv.huan.master.common.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -97,4 +101,27 @@ public class BaseCRUDController<M extends BaseEntity> extends BaseController {
         HttpSession session = request.getSession();
     	return (User)session.getAttribute(Constants.SESSION_USER);
 	}
+    
+    protected String readStreamParameter(ServletInputStream in){  
+        StringBuilder buffer = new StringBuilder();  
+        BufferedReader reader=null;  
+        try{  
+            reader = new BufferedReader(new InputStreamReader(in));  
+            String line=null;  
+            while((line = reader.readLine())!=null){  
+                buffer.append(line);  
+            }  
+        }catch(Exception e){  
+        	
+        }finally{  
+            if(null!=reader){  
+                try {  
+                    reader.close();  
+                } catch (IOException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+        }  
+        return buffer.toString();  
+    }
 }
